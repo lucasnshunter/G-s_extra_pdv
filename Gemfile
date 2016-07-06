@@ -25,6 +25,20 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-bootstrap-sass', '~> 3.3.1'
+  gem 'rails-assets-bootstrap-social', '~> 4.8.0'
+  gem 'rails-assets-datatables', '~> 1.10.4'
+  gem 'rails-assets-datatables-plugins', '~> 1.0.1'
+  gem 'rails-assets-datatables-responsive', '~> 1.0.3'
+  gem 'rails-assets-flot', '~> 0.8.3'
+  gem 'rails-assets-flot.tooltip', '~> 0.8.4'
+  gem 'rails-assets-font-awesome', '~> 4.2.0'
+  gem 'rails-assets-holderjs', '~> 2.4.1'
+  gem 'rails-assets-metisMenu', '~> 1.1.3'
+  gem 'rails-assets-morrisjs', '~> 0.5.1'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

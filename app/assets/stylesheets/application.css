@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
- */
+  */
+@import "bootstrap-sass";
+@import "bootstrap-social";
+@import "datatables";
+@import "datatables-responsive";
+@import "font-awesome";
+@import "metisMenu";
+@import "morrisjs";
+@import "sb-admin-2";
+
+
+

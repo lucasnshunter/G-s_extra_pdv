@@ -15,3 +15,15 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+//= require turbolinks
+//= require jquery
+//= require bootstrap
+//= require datatables
+//= require datatables-responsive
+//= require flot
+//= require holderjs
+//= require metisMenu
+//= require raphael
+//= require morrisjs
+//= require morris-data.js
+//= require sb-admin-2.js

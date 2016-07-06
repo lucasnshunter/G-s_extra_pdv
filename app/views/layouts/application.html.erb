@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sbadmin2</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="wrapper">
+    <%= render "partials/topnav" %>
+    <%= render "partials/sidenav" %>
+    <div id="page-wrapper">
+        <%= yield %>
+    </div>
+</div>
+</body>
+</html>
