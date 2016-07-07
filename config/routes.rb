@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'alerta/index'
+
+  get 'alerta/show'
+
   get 'cadastro/index'
 
   get 'cadastro/edit'
