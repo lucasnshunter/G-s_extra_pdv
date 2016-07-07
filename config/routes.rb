@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'registro/index'
+
+  get 'registro/show'
+
   get 'alerta/index'
 
   get 'alerta/show'
