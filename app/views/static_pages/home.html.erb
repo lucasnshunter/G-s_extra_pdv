@@ -1,29 +1,8 @@
-<div class="row">
-  <div class="col-lg-12">
-    <h1 class="page-header">Dashboard-completo</h1>
-  </div>
-  <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
- <div class="panel panel-default">
-      
-    <div class="panel-heading"><center>    <h4 >Principais ações do sistema</h4></center></div>
-      <center>
-        <button type="button" class="btn btn-primary"><%= image_tag("gas.png", :alt => "Vender credito de Gás") %></button>
-        <button type="button" class="btn btn-primary"><%= image_tag("agua.png", :alt => "Vender credito de água") %></button>
-        <button type="button" class="btn btn-primary"><%= image_tag("celular.png", :alt => "Vender credito de água") %></button>
-        <button type="button" class="btn btn-primary"><%= image_tag("sms.png", :alt => "Cadastrar novo usuario") %></button>
-        <button type="button" class="btn btn-primary"><%= image_tag("cadastro.png", :alt => "Cadastrar novo usuario") %></button>
-      </center>
-  </div> 
 
-</div>
+<!-- /.row -->
+
 <br>
-  <div class="panel panel-primary">
-      <div class="panel-heading">Saldo disponivel para vendas</div>
-      <div class="panel-body">R$: 50.000.00</div>
-    </div>
+      <%= render "partials/creditdisplay" %>
 <!-- /.row -->
 <div class="row">
   <div class="col-lg-8">
