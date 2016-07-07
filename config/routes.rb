@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'relatorio/index'
+
+  get 'relatorio/show'
+
   get 'registro/index'
 
   get 'registro/show'
