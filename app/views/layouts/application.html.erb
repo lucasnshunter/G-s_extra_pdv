@@ -8,12 +8,12 @@
 </head>
 <body>
 <div id="wrapper">
-    <%= render "partials/topnav" %>
-    <%= render "partials/sidenav" %>
+    <%= render "partials/layouts/topnav" %>
+    <%= render "partials/layouts/sidenav" %>
     <div id="page-wrapper">
-    <%= render "partials/pagename" %>
+    <%= render "partials/layouts/pagename" %>
     
-    <%= render "partials/actiondisplay" %>
+    <%= render "partials/layouts/actiondisplay" %>
     
         <%= yield %>
     </div>

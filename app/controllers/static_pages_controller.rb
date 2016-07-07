@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
+    @cadastros= Cadastro.new
+    
   end
 
   def blanck

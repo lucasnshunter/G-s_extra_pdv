@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'cadastro/index'
+
+  get 'cadastro/edit'
+
+  get 'cadastro/new'
+
+  get 'cadastro/show'
+
   get 'static_pages/home'
 
   get 'static_pages/blanck'
