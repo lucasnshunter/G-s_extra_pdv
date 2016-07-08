@@ -4,5 +4,6 @@ class GraficoController < ApplicationController
   end
 
   def show
+    
   end
 end

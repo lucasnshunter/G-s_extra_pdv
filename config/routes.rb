@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'pdv/sell_water'
+
+  get 'pdv/sell_gas'
+
+  get 'pdv/sell_credit_cell'
+
+  get 'pdv/show'
+
+  get 'pdv/dashboard'
+
   get 'grafico/index'
 
   get 'grafico/show'
