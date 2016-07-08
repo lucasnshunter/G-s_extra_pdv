@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'campanha/index'
+
+  get 'campanha/new'
+
+  get 'campanha/recycle'
+
   get 'pdv/sell_water'
 
   get 'pdv/sell_gas'
