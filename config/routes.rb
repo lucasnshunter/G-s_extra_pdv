@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'campanha/new'
 
   get 'campanha/recycle'
+  
+  get 'campanha/home'
 
   get 'pdv/sell_water'
 
@@ -18,18 +20,26 @@ Rails.application.routes.draw do
   get 'grafico/index'
 
   get 'grafico/show'
+  
+  get 'grafico/home'
 
   get 'relatorio/index'
 
   get 'relatorio/show'
 
+  get 'relatorio/home'
+  
   get 'registro/index'
 
   get 'registro/show'
+  
+  get 'registro/home'
 
   get 'alerta/index'
 
   get 'alerta/show'
+  
+  get 'alerta/home'
 
   get 'cadastro/index'
 
@@ -38,28 +48,8 @@ Rails.application.routes.draw do
   get 'cadastro/new'
 
   get 'cadastro/show'
-
-  get 'static_pages/home'
-
-  get 'static_pages/blanck'
-
-  get 'static_pages/buttons'
-
-  get 'static_pages/float'
-
-  get 'static_pages/forms'
-
-  get 'static_pages/grid'
-
-  get 'static_pages/morris'
-
-  get 'static_pages/notifications'
-
-  get 'static_pages/panelswells'
-
-  get 'static_pages/tables'
-
-  get 'static_pages/typography'
+  
+  get 'cadastro/home'
 
   get 'server/pagina_teste'
 

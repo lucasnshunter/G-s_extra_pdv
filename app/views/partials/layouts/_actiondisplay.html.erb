@@ -1,14 +1,53 @@
 <div class="row">
  <div class="panel panel-default">
       
+     
     <div class="panel-heading"><center>    <h4 >Ações disponiveis para este usuario </h4></center></div>
       <center>
-      
-           <%= render "partials/action_buttons/actionbuttonsellgas" %>
-           <%= render "partials/action_buttons/actionbuttonsellwatter" %>
-           <%= render "partials/action_buttons/actionbuttonsellcredittocellphone" %>
-           <%= render "partials/action_buttons/actionbuttonsmscampaign" %>
-           <%= render "partials/action_buttons/actionbuttonregisteruser" %>
+    <%case  @action_display_controller%>
+        <%when 1%>
+            <%= render "partials/action_buttons/alerta/actionbuttongeralalert" %>
+            <%= render "partials/action_buttons/alerta/actionbuttonserveralert" %>
+            <%= render "partials/action_buttons/alerta/actionbuttontimealert" %>
+        <%when 2%>
+            <%= render "partials/action_buttons/cadastro/actionbuttonregisteruser" %>
+            <%= render "partials/action_buttons/cadastro/actionbuttondeleteregister" %>
+            <%= render "partials/action_buttons/cadastro/actionbuttonshowallregister" %>
+            <%= render "partials/action_buttons/cadastro/actionbuttonupdateregisteruser"%>
+        <%when 3%>
+            <%= render "partials/action_buttons/campanha/actionbuttoncampanhaindex" %>
+            <%= render "partials/action_buttons/campanha/actionbuttonreciclar" %>
+            <%= render "partials/action_buttons/campanha/actionbuttonsmscampaign" %>
+        <%when 4%>
+            <%= render "partials/action_buttons/grafico/actionbuttongrafico" %>
+        <%when 5%>
+           <%= render "partials/action_buttons/pdv/actionbuttonsellgas" %>
+           <%= render "partials/action_buttons/pdv/actionbuttonsellwatter" %>
+           <%= render "partials/action_buttons/pdv/actionbuttonsellcredittocellphone" %>
+           <%= render "partials/action_buttons/campanha/actionbuttonsmscampaign" %>
+           <%= render "partials/action_buttons/cadastro/actionbuttonregisteruser" %>
+        <%when 6%>
+           <%= render "partials/action_buttons/relatorios/actionbuttonrelatorioindex" %>
+        <%when 7%>
+           <%= render "partials/action_buttons/alerta/actionbuttongeralalert" %>
+           <%= render "partials/action_buttons/alerta/actionbuttonserveralert" %>
+           <%= render "partials/action_buttons/alerta/actionbuttontimealert" %>
+           <%= render "partials/action_buttons/cadastro/actionbuttonregisteruser" %>
+           <%= render "partials/action_buttons/cadastro/actionbuttondeleteregister" %>
+           <%= render "partials/action_buttons/cadastro/actionbuttonshowallregister" %>
+           <%= render "partials/action_buttons/cadastro/actionbuttonupdateregisteruser" %> 
+           <%= render "partials/action_buttons/campanha/actionbuttoncampanhaindex" %>
+           <%= render "partials/action_buttons/campanha/actionbuttonreciclar" %>
+           <%= render "partials/action_buttons/campanha/actionbuttonsmscampaign" %>
+           <%= render "partials/action_buttons/grafico/actionbuttongrafico" %>
+           <%= render "partials/action_buttons/pdv/actionbuttonsellgas" %>
+           <%= render "partials/action_buttons/pdv/actionbuttonsellwatter" %>
+           <%= render "partials/action_buttons/pdv/actionbuttonsellcredittocellphone" %>
+           <%= render "partials/action_buttons/campanha/actionbuttonsmscampaign" %>
+           <%= render "partials/action_buttons/cadastro/actionbuttonregisteruser" %>
+           <%= render "partials/action_buttons/relatorios/actionbuttonrelatorioindex" %>
+        <%else%>
+    <%end%>
        
        
       </center>
