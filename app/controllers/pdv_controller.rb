@@ -8,12 +8,16 @@ class PdvController < ApplicationController
   
   def sell_water
     @action_display_controller=5
-        @nome_da_view="Vender Água"
+    @nome_da_view="Vender Água"
   end
 
   def sell_gas
+    @pdv=Pdv.new
+    @server=Server.new
     @action_display_controller=5
-        @nome_da_view="Vender gás"
+    @nome_da_view="Vender gás"
+    @teste=@pdv.testar_classe
+    
   end
 
   def sell_credit_cell
@@ -23,7 +27,7 @@ class PdvController < ApplicationController
 
   def show
     @action_display_controller=5
-        @nome_da_view="Show"
+    @nome_da_view="Show"
   end
 
   

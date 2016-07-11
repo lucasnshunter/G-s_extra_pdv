@@ -110,6 +110,13 @@ class Server
     
     
     def validar_usuario_vendedor
+        require "rubygems"
+        require 'json'
+        require "net/http"
+        uri = URI('http://162.243.215.24/PDV/PDV_user_validate')
+        res = Net::HTTP.post_form(uri,  'login' => 'lucas2', 'senha' => 'lucas1234')
+        res.body
+        
         
       #este metodo atende aos requisitos não funcionais :
       #R.N.F-G.E-P.D.V-1
