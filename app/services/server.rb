@@ -103,9 +103,9 @@ class Server
         require 'json'
         require "net/http"
         uri = URI('http://162.243.215.24/PDV/PDV_return_data')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1')
+        res = Net::HTTP.post_form(uri,  'pdvid' => "1")
         res.body
-    
+     
     end
     
     
@@ -114,7 +114,7 @@ class Server
         require 'json'
         require "net/http"
         uri = URI('http://162.243.215.24/PDV/PDV_user_validate')
-        res = Net::HTTP.post_form(uri,  'login' => 'lucas2', 'senha' => 'lucas1234')
+        res = Net::HTTP.post_form(uri,  'login' => 'lucas', 'passwd' => 'lucas123')
         res.body
         
         

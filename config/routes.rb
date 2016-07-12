@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'usuario/home'
+
+  get 'usuario/login'
+
+  get 'usuario/teste'
+
   get 'campanha/index'
 
   get 'campanha/new'
