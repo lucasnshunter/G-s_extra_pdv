@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  get 'usuario/home'
-
   get 'usuario/login'
 
-  get 'usuario/teste'
+  get 'usuario/gravar'
+
+  post 'usuario/gravar'
+
+  
+
 
   get 'campanha/index'
 

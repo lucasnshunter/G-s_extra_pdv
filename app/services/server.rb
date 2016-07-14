@@ -1,17 +1,66 @@
 class Server
+     
+     @record=nil
     
-    def testar_conexao(cep)
+     def validar_usuario_pdv login,passwd
         require "rubygems"
         require 'json'
         require "net/http"
-        # uri ='http://162.243.215.24/PDV/describe_API'
+        require 'yaml'
         
-        uri="https://viacep.com.br/ws/#{cep}/json/"
-        resp=Net::HTTP.get_response(URI.parse(uri))
-        resp.body
-    end
+        uri = URI('http://162.243.215.24/PDV/PDV_user_validate')
+        res = Net::HTTP.post_form(uri,  'login' => login , 'passwd' => passwd)
+       
+        @record=JSON.parse(res.body)
+        hash=Hash[*@record]
+        hash
+        
+
+
+         
+        
+      #este metodo atende aos requisitos não funcionais :
+      #R.N.F-G.E-P.D.V-1
+     end
     
-     def criar_cadastro_usuario
+     def listar_usuarios_cadastrados pdv_id
+        require "rubygems"
+        require 'json'
+        require "net/http"
+        uri = URI('http://162.243.215.24/PDV/PDV_list_users')
+        res = Net::HTTP.post_form(uri,  'pdvid' => pdv_id)
+        res.body
+    
+        #este metodo atende aos requisitos funcionais :
+        #G.E.P.D.V-11
+     end
+     def coletar_dados_usuario usrphone,pdv_id
+        require "rubygems"
+        require 'json'
+        require "net/http"
+        uri = URI('http://162.243.215.24/PDV/PDV_user_data')
+        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrphone' => '6282815379')
+        res.body
+    
+        #este metodo atende aos requisitos funcionais :
+        #G.E.P.D.V-10
+     end
+     
+      def gerar_credito_usuario usrphone,pdv_id
+        require "rubygems"
+        require 'json'
+        require "net/http"
+        uri = URI('http://162.243.215.24/PDV/PDV_remover_cadastro')
+        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrphone' => '6282815379','credval' =>10)
+        res.body
+        
+        
+        #este metodo atende aos requisitos funcionais :
+        #G.E.P.D.V-1-G.E.P.D.V-2-G.E.P.D.V-3  
+      end
+    
+    
+     def criar_cadastro_usuario pdvid,usrname,usrcpf,usraddr,usradcit,usraduf,usradcep
         require "rubygems"
         require 'json'
         require "net/http"
@@ -25,6 +74,14 @@ class Server
       #G.E.P.D.V-7
      end
      
+     def solicitar_relatorio_vendas_pdv pdvid,stdate,endate
+        require "rubygems"
+        require 'json'
+        require "net/http"
+        uri = URI('http://162.243.215.24/PDV/PDV_relatorio_vendas')
+        res = Net::HTTP.post_form(uri,  'pdvid' => '1','stdate' => stdate,'endate' =>endate)
+        res.body
+     end
      def atualizar_cadastro_usuario
         require "rubygems"
         require 'json'
@@ -39,30 +96,9 @@ class Server
       #G.E.P.D.V-7
      end
     
-    def listar_usuarios_cadastrados
-        require "rubygems"
-        require 'json'
-        require "net/http"
-        uri = URI('http://162.243.215.24/PDV/PDV_list_users')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1')
-        res.body
+   
     
-    #este metodo atende aos requisitos funcionais :
-    #G.E.P.D.V-11
-    end
-    
-    def coletar_dados_usuario
-        require "rubygems"
-        require 'json'
-        require "net/http"
-        uri = URI('http://162.243.215.24/PDV/PDV_user_data')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrphone' => '6282815379')
-        res.body
-    
-    #este metodo atende aos requisitos funcionais :
-    #G.E.P.D.V-10
-    end
-    
+   
     def remover_cadastro_usuario_final
 
         require "rubygems"
@@ -73,54 +109,34 @@ class Server
         res.body
     end
     
-    def gerar_credito_usuario
-        require "rubygems"
-        require 'json'
-        require "net/http"
-        uri = URI('http://162.243.215.24/PDV/PDV_remover_cadastro')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrphone' => '6282815379','credval' =>10)
-        res.body
-        
-        
-    #este metodo atende aos requisitos funcionais :
-    #G.E.P.D.V-1-G.E.P.D.V-2-G.E.P.D.V-3  
-    end
+   
     
-    def solicitar_relatorio_vendas_pdv
-        endate=Time.new.getutc
-        stdate=1455494400
-        require "rubygems"
-        require 'json'
-        require "net/http"
-        uri = URI('http://162.243.215.24/PDV/PDV_relatorio_vendas')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1','stdate' => stdate,'endate' =>endate)
-        res.body
-    end
+   
     
-    def solicitar_informacoes_gerais_pdv
+    def solicitar_informacoes_gerais_pdv pdv_id
         
         require "rubygems"
         require 'json'
         require "net/http"
         uri = URI('http://162.243.215.24/PDV/PDV_return_data')
-        res = Net::HTTP.post_form(uri,  'pdvid' => "1")
-        res.body
+        res = Net::HTTP.post_form(uri,  'pdvid' => pdv_id)
+        @record=JSON.parse(res.body)
+        hash=Hash[*@record]
+        hash
      
     end
     
-    
-    def validar_usuario_vendedor
+    def testar_conexao(cep)
         require "rubygems"
         require 'json'
         require "net/http"
-        uri = URI('http://162.243.215.24/PDV/PDV_user_validate')
-        res = Net::HTTP.post_form(uri,  'login' => 'lucas', 'passwd' => 'lucas123')
-        res.body
+        # uri ='http://162.243.215.24/PDV/describe_API'
         
-        
-      #este metodo atende aos requisitos não funcionais :
-      #R.N.F-G.E-P.D.V-1
+        uri="https://viacep.com.br/ws/#{cep}/json/"
+        resp=Net::HTTP.get_response(URI.parse(uri))
+        resp.body
     end
+   
     
     
     
