@@ -1,3 +1,32 @@
-
-
-<%= render 'form' %>
+<center>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><h1>Formulario de cadastro de usuario</h1></h3>
+    </div>
+    <div class="panel-body">
+       <form name="cadastro" action="new" method="post">
+            <%= render "partials/cadastro/nomeusuario" %>
+            <%= render "partials/cadastro/cpfusuario" %>
+            <%= render "partials/cadastro/enderecousuario" %>
+            <%= render "partials/cadastro/usrbairro" %>
+            <%= render "partials/cadastro/usrarea" %>
+            <%= render "partials/cadastro/cidadeusuario" %>
+            <%= render "partials/cadastro/estadousuario" %>
+            <%= render "partials/cadastro/cepusuario" %>
+            <%= render "partials/cadastro/celularusuario" %>
+            
+            
+        
+            <button type="submit" class="btn btn-primary">Subimeter</button>
+        </form>
+    </div>
+         
+   
+   
+   
+ 
+ 
+  
+  
+ 
+</center>

@@ -5,9 +5,6 @@ Rails.application.routes.draw do
 
   post 'usuario/gravar'
 
-  
-
-
   get 'campanha/index'
 
   get 'campanha/new'
@@ -44,21 +41,19 @@ Rails.application.routes.draw do
   
   get 'registro/home'
 
-  get 'alerta/index'
-
-  get 'alerta/show'
-  
-  get 'alerta/home'
-
   get 'cadastro/index'
 
   get 'cadastro/edit'
 
   get 'cadastro/new'
+  
+  post 'cadastro/new'
 
   get 'cadastro/show'
   
   get 'cadastro/home'
+  
+  post 'cadastro/salvo'
 
   get 'server/pagina_teste'
 
