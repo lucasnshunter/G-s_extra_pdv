@@ -1,3 +1,70 @@
-<h1>Cadastro#show</h1>
-<p>Find me in app/views/cadastro/show.html.erb</p>
-<%=@cadastro.usrname%>
+
+<div class="panel panel-success">
+   <center><div class="panel-heading"><h2>Exibindo cadastro para : <%=@tela['name']%></h2></center> 
+   </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+        <thead>
+         <tr>
+            <td>Nome</td>
+            <td>CPF</td>
+            <td>Telefone</td>
+            <td>PDV Registrado</td>
+            <td>Credito de gás atual</td>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+            <td><%=@tela['name']%></td>
+            <td><%=@tela['CPF']%></td>
+            <td><%=@tela['phone']%></td>
+            <td><%=@tela['pdvid']%></td>
+            <td><%=@tela['currentGasCredits']%></td>
+         </tr>
+        </tbody>
+        
+        <thead>
+         <tr>
+            <td>Endereço</td>
+            <td>Logradouro</td>
+            <td>Bairro</td>
+            <td>Cidade</td>
+            <td>Estado</td>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+           <td><%=@tela['address']%></td>
+           <td><%=@tela['logradouro']%></td>
+           <td><%=@tela['bairro']%></td>
+           <td><%=@tela['city']%></td>
+           <td><%=@tela['UF']%></td>
+         </tr>
+        </tbody>
+        
+        
+        
+        </tbody>
+        
+  
+    </table>
+  </div>
+  <div class="panel-footer"><center><h3>Ações disponiveis</h3></center></div>
+      <table class="table table-bordered">
+          <tr>
+                   <td>
+                        <form name="cadastro" action="update" method="post">
+                            <input type="hidden" name="id" value=<%=@tela['_id']%>><br>
+                            <button type="submit" class="btn btn-warning">atualizar <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </form>
+                  </td>
+                   <td>
+                     <form name="cadastro" action="delete" method="post">
+                        <input type="hidden" name="id" value=<%=@tela['_id']%>><br>
+                        <button type="submit" class="btn btn-danger">deletar <i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </form>
+                 </td>
+                
+          </tr>
+    </table>
+</div>

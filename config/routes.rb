@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get 'pdv/sell_water'
 
+  post 'pdv/sell_gas'
+  
   get 'pdv/sell_gas'
 
   get 'pdv/sell_credit_cell'
@@ -22,6 +24,10 @@ Rails.application.routes.draw do
   get 'pdv/show'
 
   get 'pdv/dashboard'
+  
+  get 'pdv/pagina_teste'
+  
+  post 'pdv/pagina_teste'
 
   get 'grafico/index'
 
@@ -44,6 +50,8 @@ Rails.application.routes.draw do
   get 'cadastro/index'
 
   get 'cadastro/edit'
+  
+  post 'cadastro/edit'
 
   get 'cadastro/new'
   
@@ -51,9 +59,19 @@ Rails.application.routes.draw do
 
   get 'cadastro/show'
   
+  post 'cadastro/show'
+  
   get 'cadastro/home'
   
   post 'cadastro/salvo'
+  
+  get 'cadastro/pagina_teste'
+  
+  post 'cadastro/pagina_teste'
+  
+  get 'cadastro/delete'
+  
+  post 'cadastro/delete'
 
   get 'server/pagina_teste'
 

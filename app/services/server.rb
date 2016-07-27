@@ -1,6 +1,17 @@
 class Server
      
      @record=nil
+     
+     
+     def verificar_status_pdv os_pdv
+          require "rubygems"
+        require 'json'
+        require "net/http"
+        require 'yaml'
+        uri = URI('http://162.243.215.24/PDV/PDV_status')
+        res = Net::HTTP.post_form(uri,  'pdvid' => "1")
+        res.body
+     end
     
      def validar_usuario_pdv login,passwd
         require "rubygems"
@@ -35,9 +46,10 @@ class Server
         'usrbairro' =>usuario.usrbairro,'usrarea' =>usuario.usrarea ,'usradcit' => usuario.usradcit, 
         'usraduf' => usuario.usraduf, 'usradcep' => usuario.usradcep,'usrphone' => usuario.usrphone)
          
-        @record=JSON.parse(res.body)
-        hash=Hash[*@record]
-        hash
+        #@record=JSON.parse(res.body)
+        #hash=Hash[*@record]
+        #hash
+        #res.body
       #este metodo atende aos requisitos funcionais :
       #G.E.P.D.V-7
       #implementado
@@ -51,19 +63,20 @@ class Server
         require "net/http"
         uri = URI('http://162.243.215.24/PDV/PDV_list_users')
         res = Net::HTTP.post_form(uri,  'pdvid' => "1")
-        res.body
-    
+        @record=JSON.parse(res.body)
+        @record
         #este metodo atende aos requisitos funcionais :
         #G.E.P.D.V-11
      end
      
-     def coletar_dados_usuario usuario
+     def coletar_dados_usuario usr_id
         require "rubygems"
         require 'json'
         require "net/http"
         uri = URI('http://162.243.215.24/PDV/PDV_user_data')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrphone' => "82815379")
-        res.body
+        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrid' => usr_id)
+        @record=JSON.parse(res.body)
+        @record
     
         #este metodo atende aos requisitos funcionais :
         #G.E.P.D.V-10
@@ -75,16 +88,17 @@ class Server
      
      
      
-     def atualizar_cadastro_usuario
+     def atualizar_cadastro_usuario usuario
         require "rubygems"
         require 'json'
         require "net/http"
         uri = URI('http://162.243.215.24/PDV/PDV_atualizar_cadastro')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1', 'usrname' => 'lucas nunes de sousa hunter',
-        'usrcpf' => '74944681100', 'usraddr' => 'rua gr 7 quadra 11 lote 31',
-        'usrbairro' =>'grande retiro','usrarea' =>'zona leste' ,'usradcit' => 'goiânia', 
-        'usraduf' => 'GO', 'usradcep' => '74766050','usrphone' => '6282815379')
-         res.body
+        res = Net::HTTP.post_form(uri,  'pdvid' => '1', 'usrname' => usuario.usrname,
+        'usrcpf' => usuario.usrcpf, 'usraddr' => usuario.usraddr,
+        'usrbairro' =>usuario.usrbairro,'usrarea' =>usuario.usrarea ,'usradcit' => usuario.usradcit, 
+        'usraduf' => usuario.usraduf, 'usradcep' => usuario.usradcep,'usrphone' => usuario.usrphone)
+        @record=JSON.parse(res.body)
+        @record
       #este metodo atende aos requisitos funcionais :
       #G.E.P.D.V-7
      end
@@ -92,14 +106,15 @@ class Server
    
     
    
-    def remover_cadastro_usuario_final
+    def remover_cadastro_usuario usr_id
 
         require "rubygems"
         require 'json'
         require "net/http"
-        uri = URI('http://162.243.215.24/PDV/PDV_generate_credit')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrphone' => '6282815379')
-        res.body
+        uri = URI('http://162.243.215.24/PDV/PDV_remover_cadastro')
+        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrid' => usr_id )
+        @record=JSON.parse(res.body)
+        @record
     end
     
    
@@ -120,12 +135,12 @@ class Server
     end
     
     #metodos de serviço para o PDV
-    def gerar_credito_usuario usrphone,pdv_id
+     def gerar_credito_gas os_pdv
         require "rubygems"
         require 'json'
         require "net/http"
-        uri = URI('http://162.243.215.24/PDV/PDV_remover_cadastro')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1','usrphone' => '6282815379','credval' =>10)
+        uri = URI('http://162.243.215.24/PDV/PDV_generate_credit_gas')
+        res = Net::HTTP.post_form(uri,  'pdvid' => 1,'usrphone' => os_pdv.usrphone,'credval' =>os_pdv.credval)
         res.body
         
         
@@ -133,31 +148,40 @@ class Server
         #G.E.P.D.V-1-G.E.P.D.V-2-G.E.P.D.V-3  
       end
       
-      def solicitar_informacoes_gerais_pdv pdv_id
+      def solicitar_informacoes_gerais_pdv usrphone,pdvid,credval
         
         require "rubygems"
         require 'json'
         require "net/http"
         uri = URI('http://162.243.215.24/PDV/PDV_return_data')
-        res = Net::HTTP.post_form(uri,  'pdvid' => pdv_id)
+        res = Net::HTTP.post_form(uri,  'pdvid' => pdv_id,'usrphone'=>usrphone,'credval'=>credval)
         @record=JSON.parse(res.body)
         hash=Hash[*@record]
         hash
      
-    end
+      end
     
-    def solicitar_relatorio_vendas_pdv pdvid,stdate,endate
+    def solicitar_relatorio_vendas_pdv os_pdv
         require "rubygems"
         require 'json'
         require "net/http"
         uri = URI('http://162.243.215.24/PDV/PDV_relatorio_vendas')
-        res = Net::HTTP.post_form(uri,  'pdvid' => '1','stdate' => stdate,'endate' =>endate)
+        res = Net::HTTP.post_form(uri,  'pdvid' => '1','stdate' => os_pdv.stdate,'endate' =>os_pdv.endate)
         res.body
      end
     
     
+    def solicitar_saldo_creditos_pdv os_pdv
+        require "rubygems"
+        require 'json'
+        require "net/http"
+        uri = URI('http://162.243.215.24/PDV/PDV_saldo_creditos')
+        res = Net::HTTP.post_form(uri,  'pdvid' => '1')
+        res.body
+        
+    end
     
-    
+   
    
     
    

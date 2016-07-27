@@ -1,1 +1,35 @@
-testando
+<table class="table table-striped">
+  <thead>
+     <tr>
+        <td>Nome</td>
+        <td>CPF</td>
+        <td>CEP</td>
+        <td>Telefone</td>
+        
+     </tr>
+  </thead>
+<%@cadastrados.each do |cadastrados|%>
+ <tbody>
+     <tr>
+        <td><%=cadastrados['name']%></td>
+        <td><%=cadastrados['CPF']%></td>
+        <td><%=cadastrados['CEP']%></td>
+        <td><%=cadastrados['phone']%></td>
+
+        
+        <td>
+           <form name="cadastro" action="edit" method="post">     
+               <input type="hidden" name="id" value=<%=cadastrados['_id']%>><br>
+               <button type="submit" class="btn btn-warning">atualizar <i class="fa fa-pencil" aria-hidden="true"></i></button>
+           </form>
+        </td>
+        <td>
+        <form name="cadastro" action="show" method="post">
+            <input type="hidden" name="id" value=<%=cadastrados['_id']%>><br>
+            <button type="submit" class="btn btn-success">exibir <i class="fa fa-eye" aria-hidden="true"></i></button>
+        </form>
+        </td>
+     </tr>
+  </tbody>
+  <%end%>
+</table>
