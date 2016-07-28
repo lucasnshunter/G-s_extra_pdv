@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'campanha/index'
 
   get 'campanha/new'
+  
+  post 'campanha/new'
 
   get 'campanha/recycle'
   

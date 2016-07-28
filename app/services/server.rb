@@ -182,7 +182,9 @@ class Server
     end
     
    
-   
+   def criar_campanha campanha
+       campanha
+   end
     
    
 
